@@ -1,0 +1,36 @@
+[core]
+	editor = subl -n -w
+	excludesfile = ~/.gitignore
+[user]
+	name = Rob Galanakis
+	email = rob.galanakis@gmail.com
+[push]
+	default = simple
+[alias]
+	undo = checkout -- .
+	co = checkout
+	br = branch
+	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	sweep = "!git branch --merged | grep -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	showtool = "!sh -c 'if [ -z $1 ]; then REVISION=HEAD; else REVISION=$1; fi; git difftool $REVISION~ $REVISION' -"
+	pulp = pull --rebase --prune
+	amend = commit --amend
+[diff]
+	tool = bcomp
+[difftool]
+	prompt = false
+[difftool "bcomp"]
+	trustExitCode = true
+	cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE"
+[merge]
+	tool = bcomp
+	summary = true
+[mergetool]
+	prompt = false
+[mergetool "bcomp"]
+	trustExitCode = true
+	cmd = "/usr/local/bin/bcomp" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
