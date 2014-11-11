@@ -1,0 +1,8 @@
+alias gs="git status"
+alias co="git checkout"
+alias ll="ls -al"
+alias rmf="rm -rf"
+alias hype="sudo pkill HyperSwitch && open /Applications/HyperSwitch.app"
+alias be="bundle exec"
+alias bep="bundle exec pry"
+alias ber="bundle exec rspec"
